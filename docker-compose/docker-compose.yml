@@ -2,8 +2,6 @@ services:
 
   tibber-exporter:
     image: ghcr.io/terjesannum/tibber-exporter:latest
-    ports:
-      - "8090:8080"
     networks:
       - prometheus
     environment:
@@ -15,8 +13,6 @@ services:
     volumes:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml
       - prometheus_data:/prometheus
-    ports:
-      - "9090:9090"
     networks:
       - prometheus
     restart: always
@@ -32,8 +28,6 @@ services:
       - ../grafana/dashboard-monthly.json:/dashboard-monthly.json
       - ./grafana.sh:/grafana.sh
       - grafana_data:/var/lib/grafana
-    ports:
-      - "3000:3000"
     networks:
       - prometheus
     entrypoint:
